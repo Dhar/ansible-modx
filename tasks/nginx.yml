@@ -1,0 +1,18 @@
+---
+- name: Install Nginx
+  apt: state=present pkg=nginx
+
+- name: Change MODX file ownership
+  file: path={{ modx_install_dir }}/modx recurse=yes owner=www-data group=www-data
+
+- name: Make MODX site available
+  template: src=nginx.conf dest=/etc/nginx/sites-available/modx mode=0755
+  notify: restart nginx
+
+- name: Disable default Nginx site
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  notify: restart nginx
+
+- name: Enable MODX site
+  file: src=/etc/nginx/sites-available/modx path=/etc/nginx/sites-enabled/modx state=link
+  notify: restart nginx
