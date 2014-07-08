@@ -23,26 +23,32 @@
 
 - name: Get MODX zipfile
   get_url: url=http://modx.s3.amazonaws.com/releases/2.2.14/modx-{{ modx_version }}.zip dest={{ modx_install_dir }}/modx.zip
+  register: got_modx
 
 - name: Unzip MODX
   command: unzip -o modx.zip
+  when: got_modx|changed
   args:
     chdir: "{{ modx_install_dir }}"
     creates: "{{ modx_install_dir }}/modx-{{ modx_version }}"
 
 - name: Move MODX
   command: mv "{{ modx_install_dir }}/modx-{{ modx_version }}" "{{ modx_install_dir }}/modx"
+  when: got_modx|changed
   args:
     creates: "{{ modx_install_dir }}/modx"
 
 - name: Configure MODX installation
   template: src=config.xml dest={{ modx_install_dir }}/modx/setup/config.xml
+  when: got_modx|changed
 
 - name: Touch blank config file
   file: path={{ modx_install_dir }}/modx/core/config/config.inc.php state=touch
+  when: got_modx|changed
 
 - name: Install MODX
   command: php ./index.php --installmode=new
+  when: got_modx|changed
   args:
     chdir: "{{ modx_install_dir }}/modx/setup/"
 
