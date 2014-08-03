@@ -11,7 +11,7 @@ modx_database_password: wkc87kdo
 modx_table_prefix: modx_
 
 modx_admin_username: admin
-modx_admin_password: ocwn3o9cnjf
+modx_admin_password: admin
 modx_admin_email: modx@example.com
 
 modx_timezone: America/Los_Angeles
