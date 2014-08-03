@@ -1,5 +1,7 @@
 ---
-modx_version: 2.2.14-pl
+modx_version: 2.3.1-pl
+# get_url won't follow redirects, so we have to explicitly specify the download URL
+modx_download_url: http://modx.s3.amazonaws.com/releases/2.3.1/modx-2.3.1-pl.zip
 modx_install_dir: /var/www
 
 modx_database_server: localhost

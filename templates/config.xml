@@ -52,14 +52,14 @@
     <cmsadminemail>{{ modx_admin_email }}</cmsadminemail>
 
     <!-- Paths for your MODX core directory -->
-    <core_path>{{ modx_install_dir }}/modx/core/</core_path>
+    <core_path>{{ modx_install_dir }}/modx-{{ modx_version }}/core/</core_path>
 
     <!-- Paths for the default contexts that are installed. -->
-    <context_mgr_path>{{ modx_install_dir }}/modx/manager/</context_mgr_path>
+    <context_mgr_path>{{ modx_install_dir }}/modx-{{ modx_version }}/manager/</context_mgr_path>
     <context_mgr_url>/manager/</context_mgr_url>
-    <context_connectors_path>{{ modx_install_dir }}/modx/connectors/</context_connectors_path>
+    <context_connectors_path>{{ modx_install_dir }}/modx-{{ modx_version }}/connectors/</context_connectors_path>
     <context_connectors_url>/connectors/</context_connectors_url>
-    <context_web_path>{{ modx_install_dir }}/modx/</context_web_path>
+    <context_web_path>{{ modx_install_dir }}/modx-{{ modx_version }}/</context_web_path>
     <context_web_url>/</context_web_url>
 
     <!-- Whether or not to remove the setup/ directory after installation. -->

@@ -3,7 +3,7 @@
   apt: state=present pkg=nginx
 
 - name: Change MODX file ownership
-  file: path={{ modx_install_dir }}/modx recurse=yes owner=www-data group=www-data
+  file: path={{ modx_install_dir }}/modx-{{ modx_version }} recurse=yes owner=www-data group=www-data
 
 - name: Make MODX site available
   template: src=nginx.conf dest=/etc/nginx/sites-available/modx mode=0755
